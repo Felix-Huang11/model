@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>GoAskMe Games Login</title>
+<title>GoAskMe Wallet Login</title>
 <script src="./qrcode.js"></script>
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +20,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body>
 <!--header-->
 	<div class="header-w3l">
-		<h1>GoAskMe Games Login</h1>
+		<h1>GoAskMe Wallet Login</h1>
 	</div>
 <!--//header-->
 
@@ -28,25 +28,53 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="main-content-agile">
 	<div class="sub-main-w3">
 	
-		<form action="#" method="post">
+		<!-- <form action="#" method="post">
 			<input placeholder="Username or E-mail" name="Name" class="user" type="text" required=""><br>
 			<input  placeholder="Password" name="Password" class="pass" type="password" required=""><br>
 			<input type="submit" value="">
-		</form>
-		<div>
+		</form> -->
+		<div id="qr">
 			<script>
-            window.onload = function() {
-                var qrcode = new QRCode(document.getElementById("qrcode"), {
-                    width: 200, //设置宽高
-                    height: 200
-                });
-                qrcode.makeCode("{SimpleWallet 1.0 goaskme icon action uuid url expired loginMemo}");
-                // document.getElementById("send").onclick = function() {
-                //     qrcode.makeCode(document.getElementById("getval").value);
-                // }
-            }
-        </script>
+                window.onload = function() {
+                    var qrcode = new QRCode(document.getElementById("qr"), {
+                        width: 260, //设置宽高
+                        height: 260
+                    });
+                    qrcode.makeCode(JSON.stringify({
+                        protocol:'SimpleWallet',
+                        version:1.0,
+                        dappName:'goaskme games',
+                        dappIcon:'#',
+                        action:'login',
+                        uuID:'id',
+                        loginUrl:'https://game.goaskme.app',
+                        expired:2020,
+                        loginMemo:'user login',
+                    }));
+
+                    document.getElementById("refresh").onclick = function() {
+                        qrcode.makeCode(JSON.stringify({
+                        protocol:'SimpleWallet',
+                        version:1.0,
+                        dappName:'goaskme games',
+                        dappIcon:'#',
+                        action:'login',
+                        uuID:'id',
+                        loginUrl:'https://game.goaskme.app',
+                        expired:2020,
+                        loginMemo:'user login',
+                    }));
+                    }
+                    
+                }
+            </script>
 		</div>
+		<div class="notice">
+                <span>Scan QR Code in wallet app to login</span>
+        </div>
+        <div class="buttonBox">
+            <button class="button" id="refresh">Refresh</button>
+        </div>
 	</div>
 </div>
 <!--//main-->

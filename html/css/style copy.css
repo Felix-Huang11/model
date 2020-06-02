@@ -57,25 +57,7 @@ body {
 }
 #qr{
 	margin: 145px auto;
-	width: 20%;
-}
-.notice span{
-    margin: 200px auto;
-    padding: 2.3em 0;
-    font-size: 1em;
-    color: white;
-}
-.buttonBox{
-    padding: 20px;
-}
-.button {
-    background-color: #e7e7e7; /* Green */
-    border: none;
-    padding: 10px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+	text-align: center;
 }
 .sub-main-w3 input[type="text"],.sub-main-w3 input[type="password"] {
     outline: none;
